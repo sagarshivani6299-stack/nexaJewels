@@ -1,0 +1,100 @@
+@import "tailwindcss";
+:root {
+  --jewel-green: #173f35;
+  --jewel-green-hover: #245647;
+  --jewel-gold: #b18b4c;
+  --jewel-champagne: #d9bd82;
+  --jewel-ivory: #ff fefa;
+  --jewel-border: #e6dccb;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fffefa;
+  color: var(--jewel-green);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:not(:disabled),
+a {
+  transition:
+    color 250ms ease,
+    background-color 250ms ease,
+    border-color 250ms ease,
+    box-shadow 250ms ease;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--jewel-gold);
+  outline-offset: 3px;
+}
+
+.jewel-card {
+  overflow: hidden;
+  border: 1px solid var(--jewel-border);
+  background: #fffefa;
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease,
+    border-color 300ms ease;
+}
+
+@media (hover: hover) {
+  .jewel-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--jewel-champagne);
+    box-shadow: 0 18px 38px rgb(23 63 53 / 10%);
+  }
+
+  .jewel-image {
+    transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .jewel-card:hover .jewel-image {
+    transform: scale(1.045);
+  }
+}
+
+.jewel-button {
+  background: var(--jewel-green);
+  color: #fffefa;
+}
+
+.jewel-button:hover {
+  background: var(--jewel-green-hover);
+  box-shadow: 0 8px 22px rgb(23 63 53 / 18%);
+}
+
+.jewel-gold-button {
+  background: var(--jewel-champagne);
+  color: var(--jewel-green);
+}
+
+.jewel-gold-button:hover {
+  background: #ead5a5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

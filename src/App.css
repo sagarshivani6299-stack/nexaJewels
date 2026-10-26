@@ -1,0 +1,291 @@
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+}
+
+.gold-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 12px 24px;
+  border: 1px solid var(--color-gold);
+  background: var(--color-gold);
+  color: var(--color-forest-dark);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition:
+    background 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease;
+}
+
+.gold-button:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-gold-light);
+  background: var(--color-gold-light);
+}
+
+.outline-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 24px;
+  border: 1px solid currentColor;
+  background: transparent;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition:
+    background 200ms ease,
+    color 200ms ease;
+}
+
+.outline-button:hover {
+  background: var(--color-forest);
+  color: white;
+}
+
+.form-field {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  background: white;
+  padding: 12px 14px;
+  color: var(--color-forest);
+  outline: none;
+  transition: border-color 200ms ease;
+}
+
+.form-field:focus {
+  border-color: var(--color-gold);
+}
+
+.form-field::placeholder {
+  color: #a39a8d;
+}
+
+.product-image-wrap {
+  position: relative;
+  overflow: hidden;
+  background: #f5f0e7;
+}
+
+.product-image {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  transition: transform 650ms ease;
+}
+
+.product-image-wrap:hover .product-image {
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-image,
+  .gold-button {
+    transition: none;
+  }
+}
+
+/* =========================================
+   NEXAJEWELS — SHOP PAGE ANIMATIONS
+========================================= */
+
+.shop-hero {
+  isolation: isolate;
+}
+
+.shop-hero-image {
+  animation: jewelleryImageReveal 1.2s ease-out both;
+  transition: transform 1.4s ease;
+}
+
+.shop-hero:hover .shop-hero-image {
+  transform: scale(1.035);
+}
+
+.shop-hero-content {
+  animation: jewelleryTextReveal 850ms
+    cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.shop-fade-up {
+  animation: jewelleryTextReveal 650ms
+    cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.shop-filter-enter {
+  animation: jewelleryFilterEnter 350ms ease-out both;
+}
+
+@keyframes jewelleryImageReveal {
+  from {
+    opacity: 0.5;
+    transform: scale(1.06);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes jewelleryTextReveal {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes jewelleryFilterEnter {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shop-hero-image,
+  .shop-hero-content,
+  .shop-fade-up,
+  .shop-filter-enter {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* ==================================
+   NEXAJEWELS PREMIUM NAVBAR
+================================== */
+
+.nexa-navbar {
+  box-shadow: 0 4px 22px rgb(23 63 53 / 4%);
+}
+
+.nexa-logo {
+  text-decoration: none;
+}
+
+/* Navigation underline animation */
+.nexa-nav-link {
+  text-decoration: none;
+  transition: color 250ms ease;
+}
+
+.nexa-nav-link::after {
+  position: absolute;
+  right: 0;
+  bottom: 3px;
+  left: 0;
+  height: 1px;
+  background: #B18B4C;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms ease;
+}
+
+.nexa-nav-link:hover::after,
+.nexa-nav-link.is-active::after {
+  transform: scaleX(1);
+}
+
+/* Right-side icons */
+.nexa-action {
+  align-items: center;
+  justify-content: center;
+  transition:
+    color 250ms ease,
+    transform 250ms ease;
+}
+
+.nexa-action:hover {
+  color: #B18B4C;
+  transform: translateY(-2px);
+}
+
+/* Cart and wishlist count */
+.nexa-count {
+  position: absolute;
+  top: 0;
+  right: -2px;
+  display: flex;
+  min-width: 17px;
+  height: 17px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #FFFEFA;
+  border-radius: 999px;
+  background: #B18B4C;
+  padding: 0 4px;
+  color: #FFFEFA;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.nexa-cart-count {
+  background: #173F35;
+}
+
+/* Search reveal */
+.nexa-search-panel {
+  animation: nexaSearchReveal 250ms ease-out both;
+}
+
+@keyframes nexaSearchReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-7px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Keyboard accessibility */
+.nexa-navbar a:focus-visible,
+.nexa-navbar button:focus-visible,
+.nexa-navbar input:focus-visible {
+  outline: 2px solid #B18B4C;
+  outline-offset: 3px;
+}
+
+/* Respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+  .nexa-nav-link,
+  .nexa-nav-link::after,
+  .nexa-action,
+  .nexa-search-panel {
+    animation: none !important;
+    transition: none !important;
+  }
+}
